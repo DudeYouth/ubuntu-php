@@ -7,5 +7,4 @@ RUN apt-get update \
 RUN sed -i s/"PermitRootLogin without-password"/"PermitRootLogin yes"/g /etc/ssh/sshd_config
 RUN cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 EXPOSE 22
-COPY sshd.conf /etc/supervisor/conf.d/sshd.conf
 CMD ["/usr/bin/supervisord"]
