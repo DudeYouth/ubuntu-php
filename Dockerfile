@@ -1,28 +1,4 @@
-FROM ubuntu16.04
+FROM  registry.cn-hangzhou.aliyuncs.com/myubuntu/ubuntu
 
-MAINTAINER turtle turtle@anasit.com
+MAINTAINER dudeyouthboy 1157536217@qq.com
 
-RUN 
-        apt-key adv --keyserver hkpkeyserver.ubuntu.com80 --recv 0xcbcb082a1bb943db && 
-        apt-get update && 
-        apt-get install -y mariadb-server mariadb-common && 
-        apt-get install -y php && 
-        apt-get install -y nginx && 
-        apt-get install -y vim 
-
-
-
-# 配置nginx
-
-Copy .default etcnginxsites-availabledefault
-
-# 添加启动脚本
-ADD .start.sh start.sh
-RUN chmod 755 start.sh
-
-
-CMD start.sh && tail -f
-
-# Expose ports.
-EXPOSE 3306
-EXPOSE 80
